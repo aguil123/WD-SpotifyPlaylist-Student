@@ -120,6 +120,17 @@ function buildPlaylist() {
      ===================================================== */
 
 
+     let mode = modeSelector.value();
+     let songs;
+
+     if(mode == "quickplay"){
+      songs = allSongs.slice(0,3);
+     } else if(mode == "fullsession"){
+      songs = allSongs;
+     }
+
+
+
 
   /* =====================================================
      DEV TEAMS — STEP 6: Conditional Feedback
@@ -164,6 +175,17 @@ function buildPlaylist() {
 
      YOUR CODE GOES HERE:
      ===================================================== */
+     container.innerHTML = "";
+     songsRemovedCount = 0;
+     milestone.textContent = "";
+
+     if(songs.length === 0){
+      feedback.textContent = "No songs found for this mood.";
+      feedback.className = "feedback-box error";
+     } else {
+      feedback.textContent = `${songs.length} songs loaded for this mood.`;
+      feedback.className = "feedback-box success";
+     }
 
 
 
